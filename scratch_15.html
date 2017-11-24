@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            大连理工大学邮箱首页
+        </title>
+        <style>
+            .mytxt{
+                color:#333;
+                line-height:normal;
+                font-family:"Microsoft YaHei",Tahoma,Verdana,SimSun;
+                font-style:normal;
+                font-variant:normal;
+                font-size-adjust:none;
+                font-stretch:normal;
+                font-weight:normal;
+                margin-top:0px;
+                margin-bottom:0px;
+                margin-left:0px;
+                padding-top:4px;
+                padding-right:4px;
+                padding-bottom:4px;
+                padding-left:4px;
+                font-size:15px;
+                outline-width:medium;
+                outline-style:none;
+                outline-color:invert;
+                border-top-left-radius:3px;
+                border-top-right-radius:3px;
+                border-bottom-left-radius:3px;
+                border-bottom-right-radius:3px;
+                text-shadow:0px 1px 2px #fff;
+                background-attachment:scroll;
+                background-repeat:repeat-x;
+                background-position-x:left;
+                background-position-y:top;
+                background-size:auto;
+                background-origin:padding-box;
+                background-clip:border-box;
+                background-color:rgb(255,255,255);
+                margin-right:8px;
+                border-top-color:#ccc;
+                border-right-color:#ccc;
+                border-bottom-color:#ccc;
+                border-left-color:#ccc;
+                border-top-width:1px;
+                border-right-width:1px;
+                border-bottom-width:1px;
+                border-left-width:1px;
+                border-top-style:solid;
+                border-right-style:solid;
+                border-bottom-style:solid;
+                border-left-style:solid;
+            }
+
+            .ti{
+                position: absolute;
+                left: 15%;
+                top: 10%;
+            }
+            #help{
+                position: relative;
+                top: -10px;
+                left: 60%;
+            }
+            .bo{
+                position: absolute;
+                top: 150px;
+                left: 15%;
+            }
+            #back{
+                z-index: 1;
+            }
+            #choose{
+                width: 185px;
+                height: 34px;
+                position:absolute;
+                top:38px;
+                left:900px;
+                z-index: 2;
+            }
+            #username{
+                position:absolute;
+                z-index: 2;
+                width: 368px;
+                height:50px;
+                top:72px;
+                left:688px;
+            }
+            #choose2{
+                position:absolute;
+                z-index: 2;
+                width: 368px;
+                height:35px;
+                top:140px;
+                left:688px;
+            }
+            #choose3{
+                position:absolute;
+                z-index: 3;
+                top:245px;
+                left:688px;
+
+            }
+            #choose4{
+                position:absolute;
+                z-index: 3;
+                top:245px;
+                left:944px;
+
+            }
+            #pass{
+                position:absolute;
+                z-index: 2;
+                width: 368px;
+                height:50px;
+                top:174px;
+                left:688px;
+            }
+            #confirm{
+                position:absolute;
+                z-index: 2;
+                width: 368px;
+                height:50px;
+                top:274px;
+                left:688px;
+                background-color: lightseagreen;
+
+            }
+        </style>
+
+    </head>
+    <body>
+    <div class="ti">
+        <img src="Screenshot-2017-11-23%20校园电子邮箱5.png">
+        <span id="help">
+            <a href="http://mail.dlut.edu.cn/coremail/help/index_zh_CN.jsp">帮助</a>
+        </span>
+    </div>
+    <div class="bo">
+        <span id="back">
+            <img src="Screenshot-2017-11-23%20校园电子邮箱(2).png">
+        </span>
+        <select id="choose">
+            <option>language:中文</option>
+            <option>language:English</option>
+        </select>
+        <span class="mytxt">
+            <input id="username" type="text" size="50px" value="请输入你的邮箱名">
+            <br>
+            <select id="choose2">
+                <option>@dlut.edu.cn</option>
+                <option>@mail.dlut.edu.cn</option>
+            </select>
+            <br>
+            <input type="password" size="50px" id="pass">
+        </span>
+        <input type="checkbox"  id="choose3">
+        <input type="checkbox"  id="choose4">
+        <button id="confirm">
+            <b><p1>登录</p1></b>
+        </button>
+    </div>
+    <div>
+
+    </div>
+
+    </body>
+</html>
