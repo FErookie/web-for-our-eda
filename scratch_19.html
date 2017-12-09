@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        一个普通的注册表单 仿豆瓣注册界面
+    </title>
+    <style>
+        *{
+            text-align: center;
+        }
+        #welcome{
+            position: absolute;
+            left:370px;
+        }
+        .inputtexts{
+            line-height: 50px;
+            position: absolute;
+            left:370px;
+            top:200px;
+        }
+        #enum,#inum,#pnum{
+            width: 220px;
+            height: 30px;
+            border-radius: 3px;
+        }
+        #enum:hover,#inum:hover,#pnum:hover{
+            box-shadow: 2px 2px 2px skyblue, inset 2px 2px 2px skyblue;
+        }
+        #enum:active,#inum:active,#pnum:active{
+            box-shadow: 1px 1px 1px skyblue, inset 1px 1px 1px skyblue;
+        }
+        #confirm{
+            width:100px ;
+            height:40px;
+            background-color: limegreen;
+            border-radius: 3px;
+            position: relative;
+            right: 30%;
+        }
+    </style>
+
+</head>
+<body>
+<div align="center">
+    <a href="https://accounts.douban.com/register"><img src="Screenshot-2017-12-9%20欢迎加入豆瓣.png"></a>
+</div>
+<div>
+    <h2 id="welcome">欢迎加入豆瓣</h2>
+</div>
+<form class="inputtexts">
+    <div>邮箱 <input id="enum" type="text" placeholder="email"><p id="intext1"></p></div>
+    <div>名号 <input id="inum" type="text" placeholder="name"><p id="intext2"></p></div>
+    <div>密码 <input id="pnum" type="password" placeholder="密码"><p id="intext3"></p></div>
+    <button id="confirm" type="submit">注册</button>
+</form>
+</body>
+</html>
