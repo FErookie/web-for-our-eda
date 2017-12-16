@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Info Manager</title>
+    <script type="text/javascript">
+        var _data = [],info_body;
+        function $(id){
+            return document.getElementById(id);
+        }
+        function Student(name,sex,age,cscore,mscore,sscore){
+            this.id = new Date().getTime();
+            this.name = name ? name : null;
+            this.age = age ? age : 0;
+            this.sex = sex ? sex : '0';
+            this.cscore = cscore ? cscore : 0;
+            this.mscore = mscore ? mscore : 0;
+            this.sscore = sscore ? sscore : 0;
+        }
+        function addHandler(){
+            var stu = new Student();
+            stu.name = $('nName').value.trim();
+            stu.age = $('nAge').value.trim();
+            stu.mscore = $('mScore').value.trim();
+            stu.sscore = $('sScore').value.trim();
+            stu.cscore = $('cScore').value.trim();
+            stu.sex = $('nSex').value.trim();
+            _data.push(stu);
+            $('resetButton').click();
+            showData(_data);
+        }
+        function showData(data){
+            info_body = info_body || $('info-body');
+            var html = [];
+            var table_body;
+            var newbutton;
+            for(var i=0;i<data.length;i++){
+                html.push('<tr>');
+                html.push('<td>'+data[i].name+'</td>');
+                html.push('<td>'+showSex(data[i].sex)+'</td>');
+                html.push('<td>'+ data[i].age+'</td>');
+                html.push('<td>'+data[i].mscore+'</td>');
+                html.push('<td>'+data[i].cscore+'</td>');
+                html.push('<td>'+data[i].sscore+'</td>');
+                html.push('</tr>');
+                table_body = getElementById('info-body');
+                newbutton = createElement('button');
+                newbutton.onclick = () => {return data[i].sscore+data[i].mscore+data[i].cscore;}
+            }
+            info_body.innerHTML = html.join("");
+
+        }
+
+        function showSex(v) {
+            if (v) {
+                if ('0' == v) {
+                    return '男';
+                } else if ('1' == v) {
+                    return '女';
+                }
+            }
+            return 'error';
+        }
+    </script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #woc{
+            position: absolute;
+            left: 200px;
+            top:200px;
+
+        }
+
+        .stitle {
+            padding-left: 20px;
+            text-align: right;
+        }
+
+        .sinput {
+            width: 100px;
+            border: 1px #eee solid;
+            margin-top: 10px;
+        }
+
+        .sslect {
+            width: 60px;
+            margin-top: 10px;
+        }
+
+        .ninput {
+            position: relative;
+            float: left;
+            left: -5px;
+            width: 100%;
+            border: 1px solid #eee;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div style="position:fixed;width:100%;background:#eee;z-index:9999;height:100px;overflow:hidden;">
+    <form>
+        <table class="table" id="add-info">
+            <tr>
+                <td width="100"><input class="ninput" type="text" id="nName"/></td>
+                <td width="80" style="overflow:hidden;">
+                    <select id="nSex" style="width:80px;">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </td>
+                <td width="80"><input class="ninput" type="text" id="nAge"/></td>
+                <td width="80"><input class="ninput" type="text" id="mScore"/></td>
+                <td width="80"><input class="ninput" type="text" id="cScore"/></td>
+                <td width="80"><input class="ninput" type="text" id="sScore"/></td>
+                <td>
+                    <input type="button" class="btn" value="添加" onclick="addHandler()"/>
+                    <input type="reset" value="reset" id="resetButton" style="display:none;"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div style="position:absolute;top:100px;bottom:0;height:auto;width:auto;left:0;right:0;overflow:auto;">
+    <table class="table table-bordered  table-hover" style="position:absolute;top:0px;z-index:2;" id="info-list">
+        <thead>
+        <tr>
+            <td width="100">姓名</td>
+            <td width="80">性别</td>
+            <td width="80">年龄</td>
+            <td width="80">数学成绩</td>
+            <td width="80">语文成绩</td>
+            <td width="80">理综成绩</td>
+            <td width="80">
+                <button>求和</button>
+            </td>
+        </tr>
+        </thead>
+        <tbody id="info-body">
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
