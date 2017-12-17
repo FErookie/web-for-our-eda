@@ -1,0 +1,105 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="SOS.css" type="text/css">
+    <title>学生成绩管理系统</title>
+    <script>
+        function $(id){
+            return document.getElementById(id);
+        }
+        var info_body;
+        var student = [];
+        function create(name,classnum,cscore,mscore,sscore) {
+            this.name=name;
+            this.classnum=classnum;
+            this.cscore=cscore;
+            this.mscore=mscore;
+            this.sscore=sscore;
+        }
+        function add() {
+            var stu = new create();
+            var content = document.getElementById("1");
+            stu.name = $("in1").value.trim();
+            stu.classnum = $("in2").value.trim();
+            stu.cscore = $("in3").value.trim();
+            stu.mscore = $("in4").value.trim();
+            stu.sscore = $("in5").value.trim();
+            student.push(stu);
+            show(student);
+        }
+        function show(data) {
+            info_body = info_body || $('info-body');
+            var html = [];
+            for(var i=0;i < data.length;i++){
+                html.push('<tr class="tr">');
+                html.push('<td>'+data[i].name+'</td>');
+                html.push('<td>'+data[i].classnum+'</td>');
+                html.push('<td class="math">'+data[i].mscore+'</td>');
+                html.push('<td class="chinese">'+data[i].cscore+'</td>');
+                html.push('<td class="science">'+data[i].sscore+'</td>');
+                html.push('<td class="sum"></td>');
+                html.push('</tr>');
+            }
+            info_body.innerHTML = html.join("");
+        }
+        function deleting(data) {
+            info_body = info_body || $('info-body');
+            var p = document.getElementsByClassName("tr");
+            for(var key in p){
+                if(typeof(p[key]) == "object")
+                    p[key].parentNode.removeChild(p[key]);
+            }
+            data.length = 0;
+            show(data);
+        }
+        function back(data) {
+            info_body = info_body || $('info-body');
+            var p = document.getElementsByClassName("tr");
+            for(var key in p){
+                if(typeof(p[key]) == "object") {
+                    if(key == data.length)
+                        p[key].parentNode.removeChild(p[key]);
+                }
+            }
+            data.pop();
+            show(data);
+        }
+        function showsum(data) {
+            info_body = info_body || $('info-body');
+            var p = document.getElementsByClassName("sum");
+            for(var key in p){
+                if(typeof(p[key]) == "object"){
+                    p[key].innerText = ((data[key].mscore-1+1)+(data[key].cscore-1+1)+(data[key].sscore-1+1));
+                }
+
+            }
+        }
+    </script>]m
+</head>
+<table class="table">
+    <thead>
+    <tr id="tr"><th>姓名</th><th>班级</th><th>语文成绩</th><th>数学成绩</th><th>理综成绩</th><th>总计</th></tr>
+    </thead>
+    <tbody id="info-body">
+    </tbody>
+</table>
+<body>
+<form id="form1">
+    <br>
+    <label for="in1">姓名</label>  <input type="text" id="in1">
+    <br>  <br>  <br>
+    <label for="in2">班级</label>  <input type="text" id="in2">
+    <br>  <br>  <br>
+    <label for="in3">数学成绩</label>  <input type="number" id="in3" min="0" max="150">
+    <br>  <br>  <br>
+    <label for="in4">语文成绩</label>  <input type="number" id="in4" min="0" max="150">
+    <br>  <br>  <br>
+    <label for="in5">理综成绩</label>  <input type="number" id="in5" min="0" max="300">
+</form>
+<button id="button1" onclick="add()">提交</button>
+<button id="button2" onclick="deleting(student)">清除</button>
+<button id="button3" onclick="back(student)">退格</button>
+<button id="button4" onclick="showsum(student)">求和</button>
+</body>
+</html>
