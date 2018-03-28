@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        一个普通的注册表单 仿豆瓣注册界面
+    </title>
+    <style>
+        *{
+            text-align: center;
+        }
+        #welcome{
+            position: absolute;
+            left:370px;
+        }
+        .inputtexts{
+            line-height: 50px;
+            position: absolute;
+            left:370px;
+            top:200px;
+        }
+        #enum,#inum,#pnum{
+            width: 220px;
+            height: 30px;
+            border-radius: 3px;
+        }
+        #enum:hover,#inum:hover,#pnum:hover{
+            box-shadow: 2px 2px 2px skyblue, inset 2px 2px 2px skyblue;
+        }
+        #enum:active,#inum:active,#pnum:active{
+            box-shadow: 1px 1px 1px skyblue, inset 1px 1px 1px skyblue;
+        }
+        #confirm{
+            width:100px ;
+            height:40px;
+            background-color: limegreen;
+            border-radius: 3px;
+            position: relative;
+            right: 30%;
+        }
+    </style>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+
+        var log = console.log.bind(console);
+        var name = $('#inum').value.toString();
+
+        function IsEmail(str) {
+            var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+            return reg.test(str);
+        }
+        function passwordTest(str)
+        {
+            var password = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z_]{8,16}$/;
+            return password.test(str);
+        }
+        function testForm() {
+            if(!IsEmail(document.getElementById("enum").value))
+            {
+                alert("this email is illeage");
+                document.getElementById("enum").focus();
+                log(document.getElementById("enum").value);
+                return false;
+            }
+            if(!passwordTest(document.getElementById("pnum").value))
+            {
+                alert("这个密码是非法的 密码应该在8 - 16 位之间 并且其中应该同时含有数字和字母 ");
+                document.getElementById("inum").focus();
+                log(document.getElementById("pnum").value)
+                return false;
+            }
+
+        }/*
+        $("button").on("click",function(){
+            $.ajax({
+                url:"http://localhost:9999",
+                data:{name:name,},
+                type:"POST",
+                dataType:"json",
+                async:false,
+                timeout:5000,
+                complete:function(){
+                    console.log("end");
+                },
+                success:function(data,textStatus,jqXHR){
+                    console.log(data);
+                    console.log(textStatus);
+                    console.log(jqXHR);
+                },
+                error:function(textStatus,jqXHR){
+                    console.log("error");
+                    console.log(textStatus);
+                    console.log(jqXHR);
+                }
+            });
+        });*/
+
+
+    </script>
+</head>
+<body>
+<div align="center">
+    <a href="https://accounts.douban.com/register"><img src="Screenshot-2017-12-9%20欢迎加入豆瓣.png"></a>
+</div>
+<div>
+    <h2 id="welcome">欢迎加入豆瓣</h2>
+</div>
+<form class="inputtexts" method="get" action="http://127.0.0.1:7777/" >
+    <div>邮箱 <input id="enum" type="text" placeholder="email"><p id="intext1"></p></div>
+    <div>名号 <input id="inum" type="text" placeholder="name"><p id="intext2"></p></div>
+    <div>密码 <input id="pnum" type="password" placeholder="密码"><p id="intext3"></p></div>
+    <button id="confirm" type="submit">注册</button>
+</form>
+</body>
+</html>
